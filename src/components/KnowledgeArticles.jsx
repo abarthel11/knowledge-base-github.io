@@ -2,11 +2,11 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import { AUTH_KEY } from "../utils/auth"
+import { AUTH_KEY } from "../utils/auth";
+import { GET_ALL_ARTICLES } from "./utils/queries";
 
 
-const QUERY = `SELECT Title FROM Knowledge__kav WHERE PublishStatus = 'online'  AND Language = 'en_US' WITH DATA CATEGORY Article_Categories__c ABOVE_OR_BELOW All__c`;
-const URL = `https://cloudcoach--partial.sandbox.my.salesforce.com/services/data/v25.0/query/?q=${QUERY.split(' ').join('+')}`
+const URL = `https://cloudcoach--partial.sandbox.my.salesforce.com/services/data/v25.0/query/?q=${GET_ALL_ARTICLES.split(' ').join('+')}`
 const GET_ARTICLES = {
     method: 'GET',
     headers: {
@@ -19,7 +19,7 @@ export default function KnowledgeArticles() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-    console.log(QUERY);
+    console.log(GET_ALL_ARTICLES);
     console.log(URL);
   
     // Note: the empty deps array [] means
