@@ -2,13 +2,15 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
+import { AUTH_KEY } from "../utils/auth"
+
 
 const QUERY = `SELECT Title FROM Knowledge__kav WHERE PublishStatus = 'online'  AND Language = 'en_US' WITH DATA CATEGORY Article_Categories__c ABOVE_OR_BELOW All__c`;
 const URL = `https://cloudcoach--partial.sandbox.my.salesforce.com/services/data/v25.0/query/?q=${QUERY.split(' ').join('+')}`
 const GET_ARTICLES = {
     method: 'GET',
     headers: {
-        'Authorization': 'Bearer 00D0T0000000dz1!AQwAQOZZQmr39VykjUmJ0SZIJZjlGWdc56icPcc7PRgPYjBLUK6BwXJc2KM4OfUrBTm8GK4pePlP0V2vxOdZPcth0ticS0IL'
+        'Authorization': `Bearer ${AUTH_KEY}`
     }
 }
 
